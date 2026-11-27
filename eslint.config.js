@@ -18,5 +18,5 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },
-  //ola eliminen esto luego lo pongo unicamente para subir algo xd
+  //ola eliminen esto luego lo pongo unicamente para subir algo
 ])
