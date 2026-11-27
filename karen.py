@@ -1,1 +1,0 @@
-#mi primer comentario del proyecto emprendi.pop
