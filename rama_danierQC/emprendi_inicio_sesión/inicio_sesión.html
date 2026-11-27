@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f8f3">
+    <title>Iniciar sesión | EmprendiPOP</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
+            color: #202b28;
+            background: #f7f8f3;
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
+            --green: #15734f;
+            --green-dark: #105b3e;
+            --muted: #64716c;
+            --line: #dce4de;
+            --error: #a23832;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-width: 320px;
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            padding: 32px 18px;
+            background:
+                radial-gradient(ellipse at 12% 8%, #e8f2e7 0, transparent 34%),
+                radial-gradient(ellipse at 92% 90%, #fff0df 0, transparent 32%),
+                #f7f8f3;
+        }
+
+        .login-card {
+            width: min(100%, 450px);
+            padding: 40px 42px 32px;
+            border: 1px solid #e8ece7;
+            border-radius: 25px;
+            background: #fff;
+            box-shadow: 0 22px 65px rgb(29 55 42 / 9%), 0 3px 10px rgb(29 55 42 / 4%);
+        }
+
+        .brand {
+            margin: 0 0 10px;
+            color: var(--green);
+            font-size: clamp(2rem, 8vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.07em;
+            line-height: 1;
+            text-align: center;
+            text-wrap: balance;
+        }
+
+        h1 {
+            margin: 0;
+            color: #202b28;
+            font-size: 1.48rem;
+            letter-spacing: -0.04em;
+            line-height: 1.25;
+            text-align: center;
+            text-wrap: balance;
+        }
+
+        .tagline {
+            margin: 10px 0 29px;
+            color: var(--muted);
+            font-size: 0.94rem;
+            line-height: 1.5;
+            text-align: center;
+            text-wrap: pretty;
+        }
+
+        .field {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            color: #34423b;
+            font-size: 0.84rem;
+            font-weight: 650;
+        }
+
+        input {
+            width: 100%;
+            min-height: 49px;
+            padding: 0 14px;
+            border: 1px solid var(--line);
+            border-radius: 11px;
+            outline: none;
+            background: #fbfcfa;
+            color: #202b28;
+            font: inherit;
+            font-size: 0.94rem;
+            transition: border-color 140ms ease, box-shadow 140ms ease, background-color 140ms ease;
+        }
+
+        input::placeholder {
+            color: #929d97;
+            opacity: 1;
+        }
+
+        input:hover {
+            border-color: #b7c9bd;
+        }
+
+        input:focus {
+            border-color: var(--green);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgb(21 115 79 / 13%);
+        }
+
+        input[aria-invalid="true"] {
+            border-color: var(--error);
+        }
+
+        .error {
+            margin: 7px 0 0;
+            color: var(--error);
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .error:empty {
+            display: none;
+        }
+
+        .submit-button,
+        .google-button {
+            width: 100%;
+            min-height: 49px;
+            border-radius: 12px;
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.94rem;
+            font-weight: 700;
+            transition: background-color 140ms ease, border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+        }
+
+        .submit-button {
+            border: 0;
+            background: var(--green);
+            color: #fff;
+            box-shadow: 0 5px 12px rgb(21 115 79 / 19%);
+        }
+
+        .submit-button:hover {
+            background: var(--green-dark);
+            box-shadow: 0 7px 16px rgb(21 115 79 / 23%);
+        }
+
+        .submit-button:active,
+        .google-button:active {
+            transform: scale(0.96);
+        }
+
+        .forgot-row {
+            margin: 12px 0 22px;
+            text-align: right;
+        }
+
+        .text-button,
+        .create-link {
+            min-height: 40px;
+            padding: 7px 0;
+            border: 0;
+            background: transparent;
+            color: var(--green);
+            cursor: pointer;
+            font: inherit;
+            font-size: 0.86rem;
+            font-weight: 650;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 0 17px;
+            color: #89948e;
+            font-size: 0.78rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            height: 1px;
+            flex: 1;
+            background: #e8ece7;
+            content: "";
+        }
+
+        .google-button {
+            border: 1px solid var(--line);
+            background: #fff;
+            color: #34423b;
+        }
+
+        .google-button:hover {
+            border-color: #b7c9bd;
+            background: #fbfcfa;
+        }
+
+        .feedback {
+            min-height: 0;
+            margin: 14px 0 0;
+            color: var(--muted);
+            font-size: 0.83rem;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .feedback:empty {
+            display: none;
+        }
+
+        .feedback.error-state {
+            color: var(--error);
+        }
+
+        .create-prompt {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin: 23px 0 0;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .create-link {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .brand-footer {
+            margin: 22px 0 0;
+            color: #89948e;
+            font-size: 0.77rem;
+            text-align: center;
+        }
+
+        .text-button:focus-visible,
+        .create-link:focus-visible,
+        .submit-button:focus-visible,
+        .google-button:focus-visible {
+            outline: 3px solid rgb(21 115 79 / 32%);
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 420px) {
+            .login-card {
+                padding: 34px 22px 27px;
+                border-radius: 21px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+    <script src="funcion_sesión.js" defer></script>
+</head>
+<body>
+    <main class="login-card">
+        <header>
+            <p class="brand">EmprendiPOP</p>
+            <h1>Inicia sesión en EmprendiPOP</h1>
+            <p class="tagline">Impulsa tus sueños &amp; compra a tu gusto</p>
+        </header>
+
+        <form id="login-form" novalidate>
+            <div class="field">
+                <label for="identifier">Número de teléfono, nombre de usuario o correo</label>
+                <input
+                    id="identifier"
+                    name="identifier"
+                    type="text"
+                    autocomplete="username"
+                    placeholder="Teléfono, usuario o correo"
+                    aria-describedby="identifier-error"
+                    required
+                >
+                <p class="error" id="identifier-error" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+                <label for="password">Contraseña</label>
+                <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    autocomplete="current-password"
+                    placeholder="Tu contraseña"
+                    aria-describedby="password-error"
+                    required
+                >
+                <p class="error" id="password-error" aria-live="polite"></p>
+            </div>
+
+            <button class="submit-button" type="submit">Iniciar sesión</button>
+            <div class="forgot-row">
+                <button class="text-button" id="forgot-password" type="button">¿Olvidaste tu contraseña?</button>
+            </div>
+
+            <p class="divider">o continúa con</p>
+            <button class="google-button" id="google-login" type="button">Iniciar sesión con Google</button>
+            <p class="feedback" id="feedback" aria-live="polite"></p>
+        </form>
+
+        <p class="create-prompt">
+            ¿Aún no tienes cuenta?
+            <a class="create-link" href="../emprendi_registro/visual.html">Crear cuenta</a>
+        </p>
+        <p class="brand-footer">EmprendiPOP</p>
+    </main>
+</body>
+</html>
